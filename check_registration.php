@@ -1,0 +1,9 @@
+<?php
+$surname=$_POST['surname'];
+$name=$_POST['name'];
+$fathername=$_POST['fathername'];
+$phone=$_POST['phone'];
+$email=$_POST['email'];
+$password=$_POST['password'];
+$rep_password=$_POST['rep_password'];
+?>
