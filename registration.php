@@ -20,7 +20,64 @@ include "header.php";
         Пароль<input type="password" name="password" id=""><br>
         Повторите пароль<input type="password" name="rep_password" id=""><br>
         <input type="submit" value="Отправить">
-        <input type="reset" value="Очистить">
+        <input type="reset" value="Очистить"><br>
+        <?php
+        $error = (isset($_GET['error']))?$_GET['error']:'';
+        if ($error=='true')
+        {
+            $surname=$_GET['surname_fill'];
+            $name=$_GET['name_fill'];
+            $fathername=$_GET['fathername_fill'];
+            $phone=$_GET['phone_fill'];
+            $email=$_GET['email_fill'];
+            $password=$_GET['password_fill'];
+            $rep_password=$_GET['rep_password_fill'];
+            $phone_true=$_GET['phone_true'];
+            $email_true=$_GET['email_true'];
+            $password_true=$_GET['password_true'];
+        
+            if ($surname==0)
+            {
+                echo "Фамилия не введена<br>";
+            }
+            if ($name==0)
+            {
+                echo "Имя не введено<br>";
+            }
+            if ($fathername==0)
+            {
+                echo "Отчество не введено<br>";
+            }
+            if ($phone==0)
+            {
+                echo "Телефон не введен<br>";
+            }
+            if ($email==0)
+            {
+                echo "Почта не введена<br>";
+            }
+            if ($password==0)
+            {
+                echo "Пароль не введен<br>";
+            }
+            if ($rep_password==0)
+            {
+                echo "Повторите пароль<br>";
+            }
+            if ($phone_true==0)
+            {
+                echo "Телефон введен неверно<br>";
+            }
+            if ($email_true==0)
+            {
+                echo "Почта введена неверно<br>";
+            }
+            if ($password_true==0)
+            {
+                echo "Пароли не совпадают<br>";
+            }
+        }
+        ?>
     </form>
     </center>
 </body>
