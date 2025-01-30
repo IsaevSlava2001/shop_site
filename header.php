@@ -4,16 +4,17 @@ if (!isset($_SESSION['role']))
 {
     $_SESSION['role']=0;
 }
-echo "Здравствуйте".$_SESSION['role']."";
 if ($_SESSION['role']==0)
 {
     ?>
     <a href="index.php">Главная</a>
     <a href="registration.php">Регистрация</a>
+    <a href="authorisation.php">Авторизация</a>
     <?php
 }
 else if ($_SESSION['role']==1)
 {
+    echo "Здравствуйте, ".$_SESSION['surname']." ".$_SESSION['name']." ".$_SESSION['fathername']."<br>";
     ?>
     <a href="index.php">Главная</a>
     <a href="profile.php">Профиль</a>
@@ -24,6 +25,7 @@ else if ($_SESSION['role']==1)
 }
 else if ($_SESSION['role']==2)
 {
+    echo "Здравствуйте, ".$_SESSION['surname']." ".$_SESSION['name']." ".$_SESSION['fathername']."<br>";
     ?>
     <a href="index.php">Главная</a>
     <a href="profile.php">Профиль</a>
@@ -35,6 +37,7 @@ else if ($_SESSION['role']==2)
 }
 else if ($_SESSION['role']==3)
 {
+    echo "Здравствуйте, ".$_SESSION['surname']." ".$_SESSION['name']." ".$_SESSION['fathername']."<br>";
     ?>
     <a href="index.php">Главная</a>
     <a href="profile.php">Профиль</a>

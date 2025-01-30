@@ -35,6 +35,7 @@ include "header.php";
             $phone_true=$_GET['phone_true'];
             $email_true=$_GET['email_true'];
             $password_true=$_GET['password_true'];
+            $mail_exists=$_GET['mail_exists'];
         
             if ($surname==0)
             {
@@ -75,6 +76,10 @@ include "header.php";
             if ($password_true==0)
             {
                 echo "Пароли не совпадают<br>";
+            }
+            if($mail_exists==1)
+            {
+                echo "Почта уже зарегистрирована<br>";
             }
         }
         ?>

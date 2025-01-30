@@ -20,6 +20,7 @@ $rep_password_fill=true;
 $phone_true=true;
 $email_true=true;
 $password_true=true;
+$mail_exists=false;
 
 //var_dump($surname);
 if(empty($surname))
@@ -64,14 +65,28 @@ if ($password!=$rep_password)
     $password_true=false;
 }
 
-if($surname_fill && $name_fill && $fathername_fill && $phone_fill && $email_fill && $password_fill && $rep_password_fill && $phone_true && $email_true && $password_true)
+require_once 'conection.php';
+$link=mysqli_connect($host, $user, $pass,$database) or die("Ошибка при подключении к БД ".mysqli_error($link));
+$query="SELECT mail FROM user";
+$result=mysqli_query($link,$query) or die("Ошибка при выполнении запроса ".mysqli_error($link));
+while ($row=mysqli_fetch_array($result))
+{
+    if ($row['mail']==$email)
+    {
+        $mail_exists=true;
+    }
+}
+mysqli_close($link);
+
+
+if($surname_fill && $name_fill && $fathername_fill && $phone_fill && $email_fill && $password_fill && $rep_password_fill && $phone_true && $email_true && $password_true && !($mail_exists))
 {
     require_once 'conection.php';
-    $link=mysqli_connect($host, $user, $password,$database) or die("Ошибка при подключении к БД ".mysqli_error($link));
+    $link=mysqli_connect($host, $user, $pass,$database) or die("Ошибка при подключении к БД ".mysqli_error($link));
     $surname_sql=htmlentities(mysqli_real_escape_string($link,$surname));
     $name_sql=htmlentities(mysqli_real_escape_string($link,$name));
     $fathername_sql=htmlentities(mysqli_real_escape_string($link,$fathername));
-    $password_sql=htmlentities(mysqli_real_escape_string($link,md5(md5($password))));
+    $password_sql=htmlentities(mysqli_real_escape_string($link, md5(md5($password))));
     $FIO=$surname_sql.' '.$name_sql.' '.$fathername_sql;
     $query="INSERT INTO `user` VALUES (NULL,'$FIO','$phone','$email',NULL,'$password_sql',1)";
     //echo $query;
@@ -82,7 +97,7 @@ if($surname_fill && $name_fill && $fathername_fill && $phone_fill && $email_fill
 }
 else
 {
-    header("Location: registration.php?error=true&surname_fill=$surname_fill&name_fill=$name_fill&fathername_fill=$fathername_fill&phone_fill=$phone_fill&email_fill=$email_fill&password_fill=$password_fill&rep_password_fill=$rep_password_fill&phone_true=$phone_true&email_true=$email_true&password_true=$password_true");
+    header("Location: registration.php?error=true&surname_fill=$surname_fill&name_fill=$name_fill&fathername_fill=$fathername_fill&phone_fill=$phone_fill&email_fill=$email_fill&password_fill=$password_fill&rep_password_fill=$rep_password_fill&phone_true=$phone_true&email_true=$email_true&password_true=$password_true&mail_exists=$mail_exists");
 }
 
 
