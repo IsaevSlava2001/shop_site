@@ -31,7 +31,14 @@ else if ($_SESSION['role']==2)
     <a href="profile.php">Профиль</a>
     <a href="cart.php">Корзина</a>
     <a href="delivery.php">Доставка</a>
-    <a href="product_work.php">Работа с товаром</a>
+    <div class="menu_product_container">
+        <a href="product_work.php">Работа с товаром</a>
+        <div class="dropdown_product_content" style="display:none;">
+            <a href="add_product.php">Добавление товара</a>
+            <a href="delete_product.php">Удаление товара</a>
+            <a href="change_product.php">Изменение товара</a>
+        </div>
+    </div>
     <a href="exit.php">Выход</a>
     <?php
 }
@@ -43,9 +50,18 @@ else if ($_SESSION['role']==3)
     <a href="profile.php">Профиль</a>
     <a href="cart.php">Корзина</a>
     <a href="delivery.php">Доставка</a>
-    <a href="product_work.php">Работа с товаром</a>
+    <div class="menu_product_container">
+        <a href="product_work.php">Работа с товаром</a>
+        <div class="dropdown_product_content" style="display:none;">
+            <a href="add_product.php">Добавление товара</a>
+            <a href="delete_product.php">Удаление товара</a>
+            <a href="change_product.php">Изменение товара</a>
+        </div>
+    </div>
     <a href="user_work.php">Работа с пользователями</a>
     <a href="exit.php">Выход</a>
     <?php
 }
 ?>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script.js"></script>
