@@ -1,4 +1,4 @@
-CREATE TABLE User (
+CREATE TABLE user (
   UserID int AUTO_INCREMENT PRIMARY KEY,
   FIO varchar(255),
   phone varchar(255),
@@ -8,7 +8,7 @@ CREATE TABLE User (
   role int
 );
 
-CREATE TABLE Product (
+CREATE TABLE product (
   ProductID int AUTO_INCREMENT PRIMARY KEY,
   name varchar(255),
   amount int,
@@ -17,68 +17,68 @@ CREATE TABLE Product (
   price float
 );
 
-CREATE TABLE Address (
+CREATE TABLE address (
   AddressID int AUTO_INCREMENT PRIMARY KEY,
   address varchar(255),
   UserID int,
-  FOREIGN KEY (UserID) REFERENCES User(UserID) 
+  FOREIGN KEY (UserID) REFERENCES user(UserID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE
 );
 
-CREATE TABLE Cart (
+CREATE TABLE cart (
   CartID int AUTO_INCREMENT PRIMARY KEY,
   UserID int,
   ProductID int,
   TotalAmount int,
   Status int,
   TotalPrice float,
-  FOREIGN KEY (UserID) REFERENCES User(UserID) 
+  FOREIGN KEY (UserID) REFERENCES user(UserID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE,
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID) 
+  FOREIGN KEY (ProductID) REFERENCES product(ProductID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE
 );
 
-CREATE TABLE `Order` (
+CREATE TABLE `order` (
   OrderID int AUTO_INCREMENT PRIMARY KEY,
   ProductID int,
   AddressID int,
   TotalAmount int,
   TotalPrice float,
   Status int,
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID) 
+  FOREIGN KEY (ProductID) REFERENCES product(ProductID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE,
-  FOREIGN KEY (AddressID) REFERENCES Address(AddressID) 
+  FOREIGN KEY (AddressID) REFERENCES address(AddressID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE
 );
 
-CREATE TABLE Favourites (
+CREATE TABLE favourites (
   FavouritesID int AUTO_INCREMENT PRIMARY KEY,
   UserID int,
   ProductID int,
-  FOREIGN KEY (UserID) REFERENCES User(UserID) 
+  FOREIGN KEY (UserID) REFERENCES user(UserID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE,
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID) 
+  FOREIGN KEY (ProductID) REFERENCES product(ProductID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE
 );
 
-CREATE TABLE Feedback (
+CREATE TABLE feedback (
   FeedbackID int AUTO_INCREMENT PRIMARY KEY,
   UserID int,
   ProductID int,
   Mark int,
   comment varchar(255),
   photo varchar(255),
-  FOREIGN KEY (UserID) REFERENCES User(UserID) 
+  FOREIGN KEY (UserID) REFERENCES user(UserID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE,
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID) 
+  FOREIGN KEY (ProductID) REFERENCES product(ProductID) 
     ON UPDATE CASCADE 
     ON DELETE CASCADE
 );

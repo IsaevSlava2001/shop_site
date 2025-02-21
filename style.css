@@ -1,0 +1,25 @@
+.catalog{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 0 11% 0 9%;
+}
+.row{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.product{
+    width:20%;
+    margin-top:50px;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
+.product img{
+    width:100%;
+}

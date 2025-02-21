@@ -14,9 +14,11 @@ $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($lin
 if ($result)
 {
     echo "Данные успешно добавлены";
+    echo "<a href='add_product.php'>Назад</a>";
 }
 else
 {
     echo "Ошибка";
+    echo "<a href='add_product.php'>Назад</a>";
 }
 ?>
