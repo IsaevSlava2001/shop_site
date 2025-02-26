@@ -53,10 +53,13 @@ if (mysqli_num_rows($result)==1)
     $_SESSION['name']=$nam;
     $_SESSION['fathername']=$fath;
     $_SESSION['phone']=$row['phone'];
-    $_SESSION['role']=$row['role'];
+    $_SESSION['role']=(int)($row['role']);
+    header('Content-Type: text/html; charset=utf-8');
     header('Location: index.php');
 }
 else
 {
     header('Location: authorisation.php?error=true');
 }
+?>
+

@@ -1,6 +1,3 @@
-<?php
-require 'header.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +8,7 @@ require 'header.php';
 </head>
 <body>
     <?php
+    require 'header.php';
     require_once 'get_products.php';
     ?>
     <br>
@@ -40,7 +38,7 @@ require 'header.php';
             echo "<img src='files/".$product['picture']."'>";
             echo "<h3>".$product['name']."</h3>";
             echo "<p>".$product['description']."</p>";
-            echo "<p>".($product['price']/100)." руб. ".($product['price']%100)." коп. "."</p>";
+            echo "<p>".(int)($product['price']/100)." руб. ".($product['price']%100)." коп. "."</p>";
             echo "<a href='product.php?id=".$product['ProductID']."'>Подробнее</a>";
             echo "</div>";
             if($i%4==0)
