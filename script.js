@@ -54,4 +54,22 @@ $(document).ready(function(){
         }
         
     });
+    $("#all_products").click(function(){
+        var xhr_all=new XMLHttpRequest();
+        xhr_all.open('GET','get_all_products.php');
+        xhr_all.send();
+        xhr_all.onreadystatechange=function()
+        {
+            if(xhr_all.readyState!=4) return;
+            if(xhr_all.status!=200)
+            {
+                alert(xhr_all.status+':'+xhr_all.statusText);
+            }
+            else
+            {
+                $("#ajax_all_product_container").html(xhr_all.responseText);
+            }
+        }
+        return false;
+    });
 });
